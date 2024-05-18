@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% block title %}Home page{% endblock %}
+{% block body %}
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Exam | Home</title>
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+              crossorigin="anonymous">
+    </head>
+    <body>
+    <h3 class="mt-4 mb-4">Our Products</h3>
+    <div class="container">
+        <div class="row">
+            {% for i in products %}
+            <div class="col-md-4">
+                    <div class="card">
+                        <img src="{{ i.image.url }}" class="card-img-top">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ i.name }}</h5>
+                            <p class="card-text">price : {{ i.price }}</p>
+                            <p class="card-text">description : {{ i.description }}</p>
+                            <a href="{% url 'add_to_cart' i.id %}" class="btn btn-primary">Add To Cart</a>
+                        </div>
+                    </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    </body>
+    </html>
+{% endblock %}
